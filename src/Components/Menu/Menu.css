@@ -1,0 +1,40 @@
+.menu {
+    width: 25rem;
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+}
+
+.allList {
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.menuList {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.inactive:hover {
+    color: var(--primary-color);
+}
+
+.active {
+    background-color: var(--menu-selected);
+    border-radius: var(--border-radius);
+    color: var(--primary-color);
+}
+
+.centerText {
+    text-align: center;
+}
+
+.appName {
+    font-weight: bold;
+    font-size: 4rem;
+}
