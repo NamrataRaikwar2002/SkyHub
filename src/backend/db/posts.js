@@ -9,28 +9,204 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: uuid(),
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-    likes: {
+    content:"If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",  
+      likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
+    firstName:"John",
+    lastName: "Kidd",
+    username:"kiddJohn",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Adarsh",
+      lastName: "Balika",
+      username:"adarshbalika",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"Greate things take time."
+    }]
+  },
+  
+  {
+    _id: uuid(),
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
   },
   {
     _id: uuid(),
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
-    likes: {
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
   },
+  {
+    _id: uuid(),
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
+  },
+  {
+    _id: uuid(),
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
+  },
+  {
+    _id: uuid(),
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
+  },
+  {
+    _id: uuid(),
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
+  },
+  {
+    _id: uuid(),
+    content:"Life is what happens when you're busy making other plans.",  
+      likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    firstName:"Damaris",
+    lastName: "Buck",
+    username:"damarisBuck",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    profile: "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png",
+    comments:[{
+      _id: uuid(),
+      firstName:"Savanah",
+      lastName: "solis",
+      username:"savanahsolis",
+      createdAt: formatDate(),
+      updatedAt: formatDate(),
+      profile:'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+      comment:"If life were predictable it would cease to be life."
+    }]
+  },
+  
 ];
