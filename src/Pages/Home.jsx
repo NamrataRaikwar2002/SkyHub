@@ -1,6 +1,6 @@
 import { Menu, Post, PostCard, UserCard } from '../Components'
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Flex, Heading, Button, Text } from '@chakra-ui/react'
+import { Flex, Heading, Button, Text, Box } from '@chakra-ui/react'
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
         <Menu onOpen={onOpen} />
         <Flex flexDirection="column" gap="1rem">
           <Heading>Home</Heading>
-          <Text
+          <Box
             bgColor="gray.100"
             w="100%"
             borderRadius="1rem"
@@ -39,7 +39,7 @@ const Home = () => {
               />
               <Text color="gray.400">Write something interesting...</Text>
             </Flex>
-          </Text>
+          </Box>
 
           <PostCard />
           <PostCard />
