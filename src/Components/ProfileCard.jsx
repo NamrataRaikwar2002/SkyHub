@@ -11,9 +11,24 @@ import {
 } from '@chakra-ui/react'
 import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '../redux/slice/authSlice'
 
 const ProfileCard = ({ onOpenProfile }) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const user = JSON.parse(localStorage.getItem('user'))
+  const token = localStorage.getItem('token')
+  const { firstName, lastName, username } = user
+
+  const logoutHandler = () => {
+    dispatch(logoutUser())
+    navigate('/')
+    toast.success('Loggedout Successfully.')
+  }
+
   return (
     <Box>
       <Flex
@@ -26,12 +41,12 @@ const ProfileCard = ({ onOpenProfile }) => {
         padding="2rem"
       >
         <Flex justifyContent="flex-end" w="100%">
-          <Tooltip label="Logout" fontSize="lg">
+          <Tooltip label="Logout" fontSize="2xl">
             <IconButton
               icon={<FiLogOut />}
-              size="xl"
+              size="2xl"
               bg="transparent"
-              onClick={() => navigate('/')}
+              onClick={logoutHandler}
             />
           </Tooltip>
         </Flex>
@@ -41,9 +56,9 @@ const ProfileCard = ({ onOpenProfile }) => {
           src="https://thumbs.dreamstime.com/b/software-language-programmer-avatar-software-language-programmer-avatar-vector-illustration-design-110589729.jpg"
         ></Avatar>
         <Flex flexDirection="column" alignItems="center" gap="0.2rem">
-          <Heading>Namrata Raikwar</Heading>
+          <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
           <Text fontSize="xl" color="gray.500" fontWeight="bold">
-            @namrataRaikwar
+            {token ? `@${username}` : null}
           </Text>
           <Button
             onClick={onOpenProfile}
