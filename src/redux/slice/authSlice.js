@@ -1,12 +1,11 @@
-import { createSlice, current } from '@reduxjs/toolkit'
-import { login, signup } from '../thunk'
+import { createSlice } from '@reduxjs/toolkit'
+import { login, signup, addBookmark, removeBookmark } from '../thunk'
 
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
   token: localStorage.getItem('token') || null,
+  bookmarks: [],
 }
-
-console.log(initialState, 'slidfe')
 
 const authSlice = createSlice({
   name: 'auth',
@@ -33,6 +32,18 @@ const authSlice = createSlice({
     },
     [login.rejected]: (action) => {
       console.error(action)
+    },
+    [addBookmark.fulfilled]: (state, action) => {
+      state.bookmarks = action.payload.data.bookmarks
+    },
+    [addBookmark.rejected]: (action) => {
+      console.log(action)
+    },
+    [removeBookmark.fulfilled]: (state, action) => {
+      state.bookmarks = action.payload.data.bookmarks
+    },
+    [removeBookmark.rejected]: (action) => {
+      console.log(action)
     },
   },
 })

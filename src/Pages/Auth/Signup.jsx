@@ -45,7 +45,6 @@ export const Signup = () => {
         confirmPassword: '',
       })
       if (response?.payload?.status === 201) {
-        console.log(response, 'signup page')
         localStorage.setItem(
           'user',
           JSON.stringify(response.payload.data.createdUser),
