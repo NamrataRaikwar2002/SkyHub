@@ -1,11 +1,69 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { signup } from '../../redux/thunk'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 export const Signup = () => {
   const [inputType, setinputType] = useState({
     passwordType: 'password',
     confirmpaswd: 'password',
   })
+  const [signupUser, setSignupUser] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+  })
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const {
+    firstName,
+    lastName,
+    username,
+    password,
+    confirmPassword,
+  } = signupUser
+
+  const signupUserHandler = async (e) => {
+    if (
+      firstName !== '' &&
+      lastName !== '' &&
+      username !== '' &&
+      password !== '' &&
+      confirmPassword !== ''
+    ) {
+      e.preventDefault()
+      const response = await dispatch(signup(signupUser))
+      setSignupUser({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      })
+      if (response?.payload?.status === 201) {
+        console.log(response, 'signup page')
+        localStorage.setItem(
+          'user',
+          JSON.stringify(response.payload.data.createdUser),
+        )
+        localStorage.setItem('token', response.payload.data.encodedToken)
+        navigate(location?.state?.from?.pathname || '/home-page', {
+          replace: true,
+        })
+        toast.success(
+          'Congratulations, your account has been successfully created!',
+        )
+      } else {
+        toast.error('Something went wrong!')
+      }
+    } else {
+      toast.warning('Please fill the fields')
+    }
+  }
   return (
     <main className="login_page">
       <section className="login_box content">
@@ -21,8 +79,12 @@ export const Signup = () => {
                 <input
                   type="text"
                   className="login_input showHideDiv"
-                  placeholder="Enter you first name"
+                  placeholder="First name"
                   id="firstNameinput"
+                  value={firstName}
+                  onChange={(e) =>
+                    setSignupUser({ ...signupUser, firstName: e.target.value })
+                  }
                   required
                 />
               </label>
@@ -31,19 +93,27 @@ export const Signup = () => {
                 <input
                   type="text"
                   className="login_input showHideDiv"
-                  placeholder="Enter your last name"
+                  placeholder="Last name"
                   id="lastNameinput"
+                  value={lastName}
+                  onChange={(e) =>
+                    setSignupUser({ ...signupUser, lastName: e.target.value })
+                  }
                   required
                 />
               </label>
             </div>
-            <label htmlFor="emailinput" className="login_lable">
-              Email address
+            <label htmlFor="usernameinput" className="login_lable">
+              Username
               <input
-                type="email"
+                type="text"
                 className="login_input showHideDiv"
-                placeholder="Enter your email"
-                id="emailinput"
+                placeholder="Username"
+                id="usernameinput"
+                value={username}
+                onChange={(e) =>
+                  setSignupUser({ ...signupUser, username: e.target.value })
+                }
                 required
               />
             </label>
@@ -55,6 +125,10 @@ export const Signup = () => {
                   className="login_input passwordInputDiv"
                   placeholder="Enter Password"
                   id="passwordinput"
+                  value={password}
+                  onChange={(e) =>
+                    setSignupUser({ ...signupUser, password: e.target.value })
+                  }
                   required
                 />
                 <div
@@ -86,6 +160,13 @@ export const Signup = () => {
                   className="login_input passwordInputDiv"
                   placeholder="Reenter Password"
                   id="confirmPswdinput"
+                  value={confirmPassword}
+                  onChange={(e) =>
+                    setSignupUser({
+                      ...signupUser,
+                      confirmPassword: e.target.value,
+                    })
+                  }
                   required
                 />
                 {
@@ -113,7 +194,11 @@ export const Signup = () => {
                 }
               </div>
             </label>
-            <button type="submit" className="primary_btn btn">
+            <button
+              type="submit"
+              className="primary_btn btn"
+              onClick={signupUserHandler}
+            >
               Create New Account
             </button>
             <Link to="/" className="createAccount login_signup_link">
