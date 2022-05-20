@@ -25,11 +25,8 @@ const Profile = () => {
       />
       <Flex justifyContent="center" gap="1rem" padding="2rem" minW="100%">
         <Menu onOpen={onOpen} />
-        <Flex flexDirection="column" gap="2rem">
+        <Flex flexDirection="column" gap="2rem" w="60rem">
           <ProfileCard onOpenProfile={onOpenProfile} />
-          <PostCard />
-          <PostCard />
-          <PostCard />
         </Flex>
         <Flex flexDirection="column">
           <UserCard />
