@@ -9,8 +9,37 @@ import {
   Textarea,
   Button,
 } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
+import { createPost, editPost } from '../redux/thunk'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
-const Post = ({ isOpen, onClose }) => {
+const Post = ({ isOpen, onClose, userEditPost }) => {
+  const dispatch = useDispatch()
+  const [postData, setPostData] = useState('')
+  const { token } = useSelector((state) => state.auth)
+
+  useEffect(() => {
+    setPostData(userEditPost?.content)
+  }, [userEditPost])
+  const postHandler = () => {
+    if (userEditPost) {
+      const postDetail = {
+        _id: userEditPost._id,
+      }
+      dispatch(editPost({ postDetail, postData, token }))
+      setPostData('')
+      onClose()
+      toast.success('Post edited!')
+    } else {
+      dispatch(createPost({ postData, token }))
+      setPostData({ ...postData, content: '' })
+      onClose()
+      toast.success('Post created!')
+    }
+  }
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl" fontSize="2rem">
       <ModalOverlay />
@@ -26,15 +55,17 @@ const Post = ({ isOpen, onClose }) => {
             placeholder="Write something interesting..."
             size="lg"
             resize="none"
+            value={postData}
+            onChange={(e) => setPostData(e.target.value)}
           />
         </ModalBody>
         <ModalFooter>
           <Button
             colorScheme="blue"
             mr={3}
-            onClick={onClose}
             size="lg"
             fontSize="1.5rem"
+            onClick={postHandler}
           >
             Post
           </Button>
