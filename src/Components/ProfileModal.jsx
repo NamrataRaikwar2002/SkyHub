@@ -15,37 +15,44 @@ import {
   Flex,
   Avatar,
   Center,
-  Box
+  Box,
 } from '@chakra-ui/react'
-import {AiFillCamera} from 'react-icons/ai'
+import { AiFillCamera } from 'react-icons/ai'
 
 const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
   return (
     <Modal onClose={onCloseProfile} isOpen={isOpenProfile}>
       <ModalOverlay />
-      <ModalContent  maxW='45rem'>
+      <ModalContent maxW="45rem">
         <ModalHeader size="xl" fontSize="2rem">
           Edit profile
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody h="10rem">
-        <Center position='relative'>
-        <Avatar name='avatar' size="2xl" 
-              src="https://thumbs.dreamstime.com/b/software-language-programmer-avatar-software-language-programmer-avatar-vector-illustration-design-110589729.jpg"/>
-              <Box position='absolute' bottom='-2' right='17rem'  >
-              <FormLabel cursor='pointer' borderRadius='full' height='max-content' bgColor='white' padding='0.1rem'>
-                  <Input 
-                      type="file"
-                      visibility='hidden'
-                      position='absolute'
-                  />
-              <AiFillCamera  fontSize='2rem' color='gray'/>
+          <Center position="relative">
+            <Avatar
+              name="avatar"
+              size="2xl"
+              src="https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg"
+            />
+            <Box position="absolute" bottom="-2" right="17rem">
+              <FormLabel
+                cursor="pointer"
+                borderRadius="full"
+                height="max-content"
+                bgColor="white"
+                padding="0.1rem"
+              >
+                <Input type="file" visibility="hidden" position="absolute" />
+                <AiFillCamera fontSize="2rem" color="gray" />
               </FormLabel>
-              </Box>
-        </Center>
+            </Box>
+          </Center>
           <InputGroup>
             <Flex flexDirection="column">
-              <FormLabel fontSize='2xl' htmlFor="userName">Name</FormLabel>
+              <FormLabel fontSize="2xl" htmlFor="userName">
+                Name
+              </FormLabel>
               <Input
                 id="userName"
                 borderColor="gray.400"
@@ -71,7 +78,9 @@ const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
               </InputRightElement>
             </Flex>
           </InputGroup>
-          <FormLabel fontSize='2xl' htmlFor="bio">Bio</FormLabel>
+          <FormLabel fontSize="2xl" htmlFor="bio">
+            Bio
+          </FormLabel>
           <Textarea
             id="bio"
             size="xl"
@@ -80,7 +89,9 @@ const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
             size="lg"
             resize="none"
           />
-          <FormLabel fontSize='2xl' htmlFor="website">Website</FormLabel>
+          <FormLabel fontSize="2xl" htmlFor="website">
+            Website
+          </FormLabel>
           <Input
             id="website"
             borderColor="gray.400"

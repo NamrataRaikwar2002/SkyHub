@@ -53,7 +53,7 @@ const ProfileCard = ({ onOpenProfile }) => {
         <Avatar
           name="avatar"
           boxSize="15rem"
-          src="https://thumbs.dreamstime.com/b/software-language-programmer-avatar-software-language-programmer-avatar-vector-illustration-design-110589729.jpg"
+          src="https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg"
         ></Avatar>
         <Flex flexDirection="column" alignItems="center" gap="0.2rem">
           <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
@@ -96,7 +96,7 @@ const ProfileCard = ({ onOpenProfile }) => {
             </Flex>
             <Flex flexDirection="column" alignItems="center">
               <Heading as="h3" size="lg">
-                2
+                0
               </Heading>
               <Text fontSize="xl" fontWeight="bold">
                 Posts
@@ -104,7 +104,7 @@ const ProfileCard = ({ onOpenProfile }) => {
             </Flex>
             <Flex flexDirection="column" alignItems="center">
               <Heading as="h3" size="lg">
-                2
+                0
               </Heading>
               <Text fontSize="xl" fontWeight="bold">
                 Followers
