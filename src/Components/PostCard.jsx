@@ -16,9 +16,9 @@ import {
   InputGroup,
   InputRightElement,
 } from '@chakra-ui/react'
-import { BsThreeDotsVertical, BsBookmark, BsBookmarkFill } from 'react-icons/bs'
-import { FaEdit, FaTrash, FaHeart } from 'react-icons/fa'
-import { BiHeart } from 'react-icons/bi'
+import { BsThreeDotsVertical, BsBookmark, BsBookmarkFill } from 'react-icons/bs';
+import { FaEdit, FaTrash, FaHeart } from 'react-icons/fa';
+import { BiHeart } from 'react-icons/bi';
 import {
   deletePost,
   likePost,
