@@ -10,16 +10,49 @@ import {
   Button,
   InputGroup,
   Input,
-  InputRightElement,
   FormLabel,
   Flex,
   Avatar,
   Center,
   Box,
+  Heading
 } from '@chakra-ui/react'
 import { AiFillCamera } from 'react-icons/ai'
+import { editProfile } from '../redux/thunk'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 
 const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
+  const dispatch = useDispatch()
+  const {user, token} = useSelector((state)=> state.auth)
+  const [userData, setUserData] = useState({...user})
+
+
+const { firstName, lastName, profile, bio, link } = userData
+  const profileSaveHandler = () => {  
+    onCloseProfile()
+    dispatch(editProfile({userData, token}))
+  }
+
+
+  const imgChangeHandler = (e) => {
+    let reader = new FileReader()
+    reader.readAsDataURL(e.target.files[0])
+    reader.onload =() =>{
+      if(reader.readyState === 2){
+        setUserData(data => ({...data, profile:reader.result}))
+      }
+    }
+  }
+
+  const websiteChangeHadler = (e) => {
+    setUserData({...userData, link:e.target.value})
+  }
+
+  const bioChangeHandler = (e) => {
+    setUserData({...userData, bio:e.target.value})
+  }
+
   return (
     <Modal onClose={onCloseProfile} isOpen={isOpenProfile}>
       <ModalOverlay />
@@ -33,7 +66,7 @@ const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
             <Avatar
               name="avatar"
               size="2xl"
-              src="https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg"
+              src={profile}
             />
             <Box position="absolute" bottom="-2" right="17rem">
               <FormLabel
@@ -43,39 +76,16 @@ const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
                 bgColor="white"
                 padding="0.1rem"
               >
-                <Input type="file" visibility="hidden" position="absolute" />
+                <Input type="file" visibility="hidden" position="absolute" onChange={imgChangeHandler} accept='image/*' name='image'/>
                 <AiFillCamera fontSize="2rem" color="gray" />
               </FormLabel>
             </Box>
           </Center>
+          <Heading as="h6" fontSize="1.5rem">
+                   {`${firstName} ${lastName}`}
+                  </Heading>
           <InputGroup>
             <Flex flexDirection="column">
-              <FormLabel fontSize="2xl" htmlFor="userName">
-                Name
-              </FormLabel>
-              <Input
-                id="userName"
-                borderColor="gray.400"
-                placeholder="Write you name"
-                fontSize="1.5rem"
-                size="lg"
-              />
-              <InputRightElement mr="1rem">
-                <Button
-                  variant="ghost"
-                  fontSize="1.5rem"
-                  _hover={{
-                    bgColor: 'transparent',
-                  }}
-                  _focus={{
-                    borderColor: 'transparent',
-                    bgColor: 'transparent',
-                  }}
-                  _active={{
-                    bgColor: 'transparent',
-                  }}
-                ></Button>
-              </InputRightElement>
             </Flex>
           </InputGroup>
           <FormLabel fontSize="2xl" htmlFor="bio">
@@ -88,6 +98,8 @@ const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
             placeholder="Write something interesting..."
             size="lg"
             resize="none"
+            value={bio}
+            onChange={bioChangeHandler}
           />
           <FormLabel fontSize="2xl" htmlFor="website">
             Website
@@ -98,13 +110,15 @@ const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
             placeholder="Portfolio URL"
             fontSize="1.5rem"
             size="lg"
+            value={link}
+            onChange={websiteChangeHadler}
           />
         </ModalBody>
         <ModalFooter>
           <Button
             colorScheme="blue"
             mr={3}
-            onClick={onCloseProfile}
+            onClick={profileSaveHandler}
             size="lg"
             fontSize="1.5rem"
           >
