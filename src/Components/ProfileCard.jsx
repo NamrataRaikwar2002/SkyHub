@@ -12,16 +12,19 @@ import {
 import { FiLogOut } from 'react-icons/fi'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../redux/slice/authSlice'
 
-const ProfileCard = ({ onOpenProfile }) => {
+const ProfileCard = ({ onOpenProfile, editProfile, setEditProfile }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const { user, token } = useSelector((state) => state.auth)
+  const { users } = useSelector((state) => state.user)
+  const { firstName, lastName, profile, bio, username, link } = user
 
-  const user = JSON.parse(localStorage.getItem('user'))
-  const token = localStorage.getItem('token')
-  const { firstName, lastName, username } = user
+  // const localUser = JSON.parse(localStorage.getItem('user'))
+  // const token = localStorage.getItem('token')
+  // const { firstName, lastName, username } = localUser
 
   const logoutHandler = () => {
     dispatch(logoutUser())
@@ -29,6 +32,10 @@ const ProfileCard = ({ onOpenProfile }) => {
     toast.success('Loggedout Successfully.')
   }
 
+  const editProfileHandler = () => {
+    onOpenProfile()
+  }
+  const existUser = users?.find((eachUser) => eachUser._id === user._id)
   return (
     <Box>
       <Flex
@@ -50,18 +57,13 @@ const ProfileCard = ({ onOpenProfile }) => {
             />
           </Tooltip>
         </Flex>
-        <Avatar
-          name="avatar"
-          boxSize="15rem"
-          src="https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg"
-        ></Avatar>
+        <Avatar name="avatar" boxSize="15rem" src={profile}></Avatar>
         <Flex flexDirection="column" alignItems="center" gap="0.2rem">
           <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
           <Text fontSize="xl" color="gray.500" fontWeight="bold">
             {token ? `@${username}` : null}
           </Text>
           <Button
-            onClick={onOpenProfile}
             fontSize="2xl"
             size="lg"
             _hover={{
@@ -74,21 +76,22 @@ const ProfileCard = ({ onOpenProfile }) => {
             }}
             variant="outline"
             colorScheme="blue"
+            onClick={editProfileHandler}
           >
             Edit Profile
           </Button>
-          <Text>Learning web development</Text>
+          <Text>{bio}</Text>
           <Link
             href="https://adarshbalika.netlify.app/"
             isExternal
             color="blue.500"
           >
-            https://adarshbalika.netlify.app/
+            {link}
           </Link>
           <Flex gap="4rem">
             <Flex flexDirection="column" alignItems="center">
               <Heading as="h3" size="lg">
-                0
+                {existUser?.following.length}
               </Heading>
               <Text fontSize="xl" fontWeight="bold">
                 Following

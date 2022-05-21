@@ -41,25 +41,57 @@ const login = createAsyncThunk(
   },
 )
 
-const addBookmark = createAsyncThunk('auth/addBookmark', async({_id, token},{rejectWithValue}) => {
-  try{
-    const response = await axios.post(`/api/users/bookmark/${_id}`,{},{headers:{authorization:token}})
-    const data = {data:response.data}
-    return data
-  }catch(error){
-    return rejectWithValue({data:error.response.data})
+const addBookmark = createAsyncThunk(
+  'auth/addBookmark',
+  async ({ _id, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/users/bookmark/${_id}`,
+        {},
+        { headers: { authorization: token } },
+      )
+      const data = { data: response.data }
+      return data
+    } catch (error) {
+      return rejectWithValue({ data: error.response.data })
+    }
+  },
+)
 
-  }
-})
+const removeBookmark = createAsyncThunk(
+  'auth/removeBookmark',
+  async ({ _id, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        `/api/users/remove-bookmark/${_id}`,
+        {},
+        { headers: { authorization: token } },
+      )
+      const data = { data: response.data }
+      return data
+    } catch (error) {
+      console.error(error)
+      return rejectWithValue({ data: error.response.data })
+    }
+  },
+)
 
-const removeBookmark = createAsyncThunk('auth/removeBookmark', async({_id, token},{rejectWithValue}) => {
-  try{
-    const response = await axios.post(`/api/users/remove-bookmark/${_id}`,{},{headers:{authorization:token}})
-    const data = {data:response.data}
-    return data
-  }catch(error){
-    console.error(error);
-    return rejectWithValue({data:error.response.data})
-  }
-})
-export { signup, login,addBookmark, removeBookmark }
+const editProfile = createAsyncThunk(
+  'user/editProfile',
+  async ({ userData, token }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        '/api/users/edit',
+        { userData },
+        { headers: { authorization: token } },
+      )
+      const data = { data: response.data }
+      return data
+    } catch (error) {
+      console.error(error)
+      return rejectWithValue({ data: error.response.data })
+    }
+  },
+)
+
+export { signup, login, addBookmark, removeBookmark, editProfile }

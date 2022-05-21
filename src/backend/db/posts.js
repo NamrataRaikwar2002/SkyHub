@@ -48,7 +48,7 @@ export const posts = [
     },
     firstName: 'Damaris',
     lastName: 'Buck',
-    username: 'damarisBuck',
+    username: 'damarisbuck',
     createdAt: 2021,
     updatedAt: formatDate(),
     profile:
@@ -133,7 +133,7 @@ export const posts = [
     },
     firstName: 'Damaris',
     lastName: 'Buck',
-    username: 'damarisBuck',
+    username: 'damarisbuck',
     createdAt: 2018,
     updatedAt: formatDate(),
     profile:
@@ -162,7 +162,7 @@ export const posts = [
     },
     firstName: 'Damaris',
     lastName: 'Buck',
-    username: 'damarisBuck',
+    username: 'damarisbuck',
     createdAt: 2020,
     updatedAt: formatDate(),
     profile:
@@ -191,7 +191,7 @@ export const posts = [
     },
     firstName: 'Damaris',
     lastName: 'Buck',
-    username: 'damarisBuck',
+    username: 'damarisbuck',
     createdAt: 2021,
     updatedAt: formatDate(),
     profile:

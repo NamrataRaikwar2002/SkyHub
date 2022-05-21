@@ -36,12 +36,9 @@ const deletePost = createAsyncThunk(
   'posts/deletePost',
   async ({ _id, token }, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(
-        `/api/posts/${_id}`,
-        {
-          headers: { authorization: token },
-        },
-      )
+      const response = await axios.delete(`/api/posts/${_id}`, {
+        headers: { authorization: token },
+      })
       const data = { data: response.data, status: response.status }
       return data
     } catch (error) {
@@ -134,7 +131,6 @@ const deleteComment = createAsyncThunk(
       const data = { data: response.data }
       return data
     } catch (error) {
-      console.log(error)
       return rejectWithValue({ data: error.response.data })
     }
   },
