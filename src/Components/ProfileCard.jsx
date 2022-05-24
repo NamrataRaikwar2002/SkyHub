@@ -15,17 +15,13 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../redux/slice/authSlice'
 
-const ProfileCard = ({ onOpenProfile, editProfile, setEditProfile }) => {
+const ProfileCard = ({ onOpenProfile }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { user, token } = useSelector((state) => state.auth)
   const { users } = useSelector((state) => state.user)
+  const { posts } = useSelector((state) => state.post)
   const { firstName, lastName, profile, bio, username, link } = user
-
-  // const localUser = JSON.parse(localStorage.getItem('user'))
-  // const token = localStorage.getItem('token')
-  // const { firstName, lastName, username } = localUser
-
   const logoutHandler = () => {
     dispatch(logoutUser())
     navigate('/')
@@ -36,6 +32,10 @@ const ProfileCard = ({ onOpenProfile, editProfile, setEditProfile }) => {
     onOpenProfile()
   }
   const existUser = users?.find((eachUser) => eachUser._id === user._id)
+  const userPost = posts.filter(
+    (eachUser) => eachUser.username === user.username,
+  )
+
   return (
     <Box>
       <Flex
@@ -99,7 +99,7 @@ const ProfileCard = ({ onOpenProfile, editProfile, setEditProfile }) => {
             </Flex>
             <Flex flexDirection="column" alignItems="center">
               <Heading as="h3" size="lg">
-                0
+              {userPost.length}
               </Heading>
               <Text fontSize="xl" fontWeight="bold">
                 Posts

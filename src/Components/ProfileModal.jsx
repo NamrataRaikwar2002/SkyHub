@@ -20,7 +20,7 @@ import {
 import { AiFillCamera } from 'react-icons/ai'
 import { editProfile } from '../redux/thunk'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const ProfileModal = ({ isOpenProfile, onCloseProfile }) => {
   const dispatch = useDispatch()

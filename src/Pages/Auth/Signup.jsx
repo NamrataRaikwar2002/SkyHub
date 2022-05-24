@@ -36,28 +36,32 @@ export const Signup = () => {
       confirmPassword !== ''
     ) {
       e.preventDefault()
-      const response = await dispatch(signup(signupUser))
-      setSignupUser({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      })
-      if (response?.payload?.status === 201) {
-        localStorage.setItem(
-          'user',
-          JSON.stringify(response.payload.data.createdUser),
-        )
-        localStorage.setItem('token', response.payload.data.encodedToken)
-        navigate(location?.state?.from?.pathname || '/home-page', {
-          replace: true,
+      if (password === confirmPassword) {
+        const response = await dispatch(signup(signupUser))
+        setSignupUser({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
         })
-        toast.success(
-          'Congratulations, your account has been successfully created!',
-        )
+        if (response?.payload?.status === 201) {
+          localStorage.setItem(
+            'user',
+            JSON.stringify(response.payload.data.createdUser),
+          )
+          localStorage.setItem('token', response.payload.data.encodedToken)
+          navigate(location?.state?.from?.pathname || '/home-page', {
+            replace: true,
+          })
+          toast.success(
+            'Congratulations, your account has been successfully created!',
+          )
+        } else {
+          toast.error('Something went wrong!')
+        }
       } else {
-        toast.error('Something went wrong!')
+        toast.error('Both Passwords do not match')
       }
     } else {
       toast.warning('Please fill the fields')

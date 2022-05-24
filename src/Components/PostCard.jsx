@@ -43,7 +43,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
     content,
     createdAt,
   } = post
-  const { token, bookmarks, user } = useSelector((state) => state.auth)
+  const { token, bookmarks } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const [commentData, setCommentData] = useState('')
 
@@ -82,8 +82,10 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
   }
 
   const commentPostHandler = () => {
-    dispatch(commentPost({ _id, commentData, token }))
-    setCommentData('')
+    if(commentData !== ''){
+      dispatch(commentPost({ _id, commentData, token }))
+      setCommentData('')
+    }
   }
   const deleteCommentHandler = (commentId) => {
     dispatch(deleteComment({ postId: _id, commentId, token }))

@@ -33,10 +33,12 @@ const Post = ({ isOpen, onClose, userEditPost }) => {
       onClose()
       toast.success('Post edited!')
     } else {
-      dispatch(createPost({ postData, token }))
-      setPostData({ ...postData, content: '' })
-      onClose()
-      toast.success('Post created!')
+      if (postData) {
+        dispatch(createPost({ postData, token }))
+        setPostData({ ...postData, content: '' })
+        onClose()
+        toast.success('Post created!')
+      }
     }
   }
 
