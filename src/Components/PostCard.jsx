@@ -16,9 +16,9 @@ import {
   InputGroup,
   InputRightElement,
 } from '@chakra-ui/react'
-import { BsThreeDotsVertical, BsBookmark, BsBookmarkFill } from 'react-icons/bs';
-import { FaEdit, FaTrash, FaHeart } from 'react-icons/fa';
-import { BiHeart } from 'react-icons/bi';
+import { BsThreeDotsVertical, BsBookmark, BsBookmarkFill } from 'react-icons/bs'
+import { FaEdit, FaTrash, FaHeart } from 'react-icons/fa'
+import { BiHeart } from 'react-icons/bi'
 import {
   deletePost,
   likePost,
@@ -43,10 +43,9 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
     content,
     createdAt,
   } = post
-  const { token, bookmarks } = useSelector((state) => state.auth)
+  const { token, bookmarks, user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
   const [commentData, setCommentData] = useState('')
-
   const isbookmark = bookmarks.some(
     (bookmarkedPost) => bookmarkedPost._id === _id,
   )
@@ -82,7 +81,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
   }
 
   const commentPostHandler = () => {
-    if(commentData !== ''){
+    if (commentData !== '') {
       dispatch(commentPost({ _id, commentData, token }))
       setCommentData('')
     }
@@ -94,7 +93,6 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
   return (
     <>
       <Flex
-        w="60rem"
         padding="2rem"
         bgColor="gray.100"
         borderRadius="1rem"
@@ -103,8 +101,12 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
         key={_id}
       >
         <Flex justifyContent="space-between">
-          <Flex gap="1rem" w="50rem">
-            <Avatar name="avatar" size="xl" src={profile} />
+          <Flex gap="1rem">
+            <Avatar
+              name="avatar"
+              size="xl"
+              src={user.username === username ? user.profile : profile}
+            />
             <Heading>
               {`${firstName} ${lastName}`}
               <Text fontSize="xl" color="gray.500">
@@ -113,45 +115,47 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
               <Text fontSize="md">{`${createdAt}`}</Text>
             </Heading>
           </Flex>
-          <Popover>
-            <PopoverTrigger>
-              <IconButton
-                icon={<BsThreeDotsVertical />}
-                fontSize="1.8rem"
-                bg="transparent"
-                color="black"
-              ></IconButton>
-            </PopoverTrigger>
-            <PopoverContent w="5xs" paddingRight="1rem">
-              <PopoverCloseButton />
-              <PopoverArrow />
-              <PopoverBody>
-                <Flex
-                  flexDirection="column"
-                  justifyContent="flexStart"
-                  gap="0.2rem"
-                  padding="1rem"
-                >
-                  <Button
-                    leftIcon={<FaEdit />}
-                    fontSize="1.5rem"
-                    bg="transparent"
-                    onClick={editPostHandler}
+          {user.username === username ? (
+            <Popover>
+              <PopoverTrigger>
+                <IconButton
+                  icon={<BsThreeDotsVertical />}
+                  fontSize="1.8rem"
+                  bg="transparent"
+                  color="black"
+                ></IconButton>
+              </PopoverTrigger>
+              <PopoverContent w="5xs" paddingRight="1rem">
+                <PopoverCloseButton />
+                <PopoverArrow />
+                <PopoverBody>
+                  <Flex
+                    flexDirection="column"
+                    justifyContent="flexStart"
+                    gap="0.2rem"
+                    padding="1rem"
                   >
-                    Edit
-                  </Button>
-                  <Button
-                    leftIcon={<FaTrash />}
-                    fontSize="1.5rem"
-                    bg="transparent"
-                    onClick={deletePostHandler}
-                  >
-                    Delete
-                  </Button>
-                </Flex>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
+                    <Button
+                      leftIcon={<FaEdit />}
+                      fontSize="1.5rem"
+                      bg="transparent"
+                      onClick={editPostHandler}
+                    >
+                      Edit
+                    </Button>
+                    <Button
+                      leftIcon={<FaTrash />}
+                      fontSize="1.5rem"
+                      bg="transparent"
+                      onClick={deletePostHandler}
+                    >
+                      Delete
+                    </Button>
+                  </Flex>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
+          ) : null}
         </Flex>
         <Box gap="2rem">
           <Text>{content}</Text>
@@ -196,7 +200,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
         {/* comment input */}
 
         <Flex gap="1rem">
-          <Avatar name="avatar" size="md" src={profile} />
+          <Avatar name="avatar" size="md" src={!user.profile ? "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg" : user.profile} />
           <InputGroup>
             <Input
               borderColor="gray.400"
@@ -206,7 +210,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
               value={commentData}
               onChange={(e) => commentInputHandler(e)}
             />
-            <InputRightElement mr="2rem">
+            <InputRightElement mr="2rem" zIndex="1">
               <Button
                 variant="ghost"
                 fontSize="1.5rem"
@@ -232,7 +236,14 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
 
         {comments?.length > 0
           ? comments.map(
-              ({ _id, commentData, firstName, lastName, profile }) => {
+              ({
+                _id,
+                commentData,
+                firstName,
+                lastName,
+                profile,
+                username,
+              }) => {
                 return (
                   <Flex
                     gap="1rem"
@@ -242,7 +253,11 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                     alignItems="center"
                     key={_id}
                   >
-                    <Avatar name="avatar" size="md" src={profile} />
+                    <Avatar
+                      name="avatar"
+                      size="md"
+                      src={user.username === username ? user.profile : profile}
+                    />
                     <Flex
                       justifyContent="space-between"
                       w="100%"
@@ -254,37 +269,39 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                         </Heading>
                         <Text>{commentData}</Text>
                       </Flex>
-                      <Popover>
-                        <PopoverTrigger>
-                          <IconButton
-                            icon={<BsThreeDotsVertical />}
-                            fontSize="1.8rem"
-                            bg="transparent"
-                            color="black"
-                          ></IconButton>
-                        </PopoverTrigger>
-                        <PopoverContent w="5xs" paddingRight="1rem">
-                          <PopoverCloseButton />
-                          <PopoverArrow />
-                          <PopoverBody>
-                            <Flex
-                              flexDirection="column"
-                              justifyContent="flexStart"
-                              gap="0.2rem"
-                              padding="1rem"
-                            >
-                              <Button
-                                leftIcon={<FaTrash />}
-                                fontSize="1.5rem"
-                                bg="transparent"
-                                onClick={() => deleteCommentHandler(_id)}
+                      {user.firstName === firstName ? (
+                        <Popover>
+                          <PopoverTrigger>
+                            <IconButton
+                              icon={<BsThreeDotsVertical />}
+                              fontSize="1.8rem"
+                              bg="transparent"
+                              color="black"
+                            ></IconButton>
+                          </PopoverTrigger>
+                          <PopoverContent w="5xs" paddingRight="1rem">
+                            <PopoverCloseButton />
+                            <PopoverArrow />
+                            <PopoverBody>
+                              <Flex
+                                flexDirection="column"
+                                justifyContent="flexStart"
+                                gap="0.2rem"
+                                padding="1rem"
                               >
-                                Delete
-                              </Button>
-                            </Flex>
-                          </PopoverBody>
-                        </PopoverContent>
-                      </Popover>
+                                <Button
+                                  leftIcon={<FaTrash />}
+                                  fontSize="1.5rem"
+                                  bg="transparent"
+                                  onClick={() => deleteCommentHandler(_id)}
+                                >
+                                  Delete
+                                </Button>
+                              </Flex>
+                            </PopoverBody>
+                          </PopoverContent>
+                        </Popover>
+                      ) : null}
                     </Flex>
                   </Flex>
                 )

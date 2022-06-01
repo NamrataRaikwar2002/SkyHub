@@ -57,7 +57,7 @@ const ProfileCard = ({ onOpenProfile }) => {
             />
           </Tooltip>
         </Flex>
-        <Avatar name="avatar" boxSize="15rem" src={profile}></Avatar>
+        <Avatar name="avatar" boxSize="15rem" src={!profile ? "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg" : profile}></Avatar>
         <Flex flexDirection="column" alignItems="center" gap="0.2rem">
           <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
           <Text fontSize="xl" color="gray.500" fontWeight="bold">
@@ -81,11 +81,7 @@ const ProfileCard = ({ onOpenProfile }) => {
             Edit Profile
           </Button>
           <Text>{bio}</Text>
-          <Link
-            href="https://adarshbalika.netlify.app/"
-            isExternal
-            color="blue.500"
-          >
+          <Link href={link} isExternal color="blue.500">
             {link}
           </Link>
           <Flex gap="4rem">
@@ -99,7 +95,7 @@ const ProfileCard = ({ onOpenProfile }) => {
             </Flex>
             <Flex flexDirection="column" alignItems="center">
               <Heading as="h3" size="lg">
-              {userPost.length}
+                {userPost.length}
               </Heading>
               <Text fontSize="xl" fontWeight="bold">
                 Posts

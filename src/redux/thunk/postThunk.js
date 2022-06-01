@@ -62,7 +62,6 @@ const editPost = createAsyncThunk(
       const data = { data: response.data, status: response.status }
       return data
     } catch (error) {
-      console.error(error)
       return rejectWithValue({ data: error.response.data })
     }
   },

@@ -38,3 +38,38 @@
     font-weight: bold;
     font-size: 4rem;
 }
+
+@media screen and (min-width:760px) {
+    .newPostSmallScreen {
+        display: none;
+    }
+}
+
+@media screen and (max-width:760px) {
+
+    .appName,
+    .sideBarName,
+    .newPostBtn {
+        display: none;
+    }
+
+    .allList {
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
+        justify-content: space-between;
+        background-color: white;
+        padding: 1rem;
+    }
+
+    .menu {
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        z-index: 2;
+        right: 0;
+        left: 0;
+        top: unset;
+        background-color: red;
+    }
+}

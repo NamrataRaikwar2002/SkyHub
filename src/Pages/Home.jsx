@@ -1,6 +1,6 @@
 import { Menu, Post, PostCard, Suggestion } from '../Components'
 import { useDisclosure } from '@chakra-ui/hooks'
-import { Flex, Heading, Button, Text, Box } from '@chakra-ui/react'
+import { Flex, Heading, Button, Text, Box, Spinner } from '@chakra-ui/react'
 import { AiFillPlusCircle } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
@@ -10,6 +10,7 @@ const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const dispatch = useDispatch()
   const { posts, status } = useSelector((state) => state.post)
+  const { user } = useSelector((state) => state.auth)
   const [userEditPost, setUserEditPost] = useState(null)
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Home = () => {
       dispatch(getPost())
       dispatch(getAllUser())
     }
-  }, [dispatch, status, posts])
+  }, [status, posts])
 
   return (
     <>
@@ -27,9 +28,20 @@ const Home = () => {
         userEditPost={userEditPost}
         setUserEditPost={setUserEditPost}
       />
-      <Flex justifyContent="center" gap="1rem" padding="2rem" minW="100%">
+      <Flex
+        justifyContent="center"
+        gap="1rem"
+        padding="2rem"
+        minW="100%"
+        direction={{ base: 'column-reverse', md: 'row' }}
+      >
         <Menu onOpen={onOpen} />
-        <Flex flexDirection="column" gap="1rem" w="60rem">
+        <Flex
+          flexDirection="column"
+          gap="1rem"
+          w={['100%', '100%', '50%']}
+          mb="2rem"
+        >
           <Heading>Home</Heading>
           <Box
             bgColor="gray.100"
@@ -60,7 +72,7 @@ const Home = () => {
             </Flex>
           </Box>
           {posts?.length > 0 ? (
-            posts.map((post) => {
+            posts.slice(0).reverse().map((post) => {
               return (
                 <PostCard
                   key={post._id}
@@ -70,9 +82,7 @@ const Home = () => {
                 />
               )
             })
-          ) : (
-            <Heading color="gray.600">Nothing to Home</Heading>
-          )}
+          ) : <Spinner color='blue.400' size='xl' textAlign='center' position='absolute' left='50%' top='50%'/> }
         </Flex>
         <Suggestion />
       </Flex>

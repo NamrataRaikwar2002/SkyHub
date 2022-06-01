@@ -8,7 +8,7 @@ import {
   PostCard,
 } from '../Components'
 import { Flex, Heading } from '@chakra-ui/react'
-import { getAllUser } from '../redux/thunk'
+import { getAllUser, getPost } from '../redux/thunk'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -29,6 +29,7 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    dispatch(getPost())
     dispatch(getAllUser())
   }, [])
 
@@ -44,13 +45,31 @@ const Profile = () => {
         isOpenProfile={isOpenProfile}
         onCloseProfile={onCloseProfile}
       />
-      <Flex justifyContent="center" gap="1rem" padding="2rem" minW="100%">
+      <Flex
+        justifyContent="center"
+        gap="1rem"
+        padding="2rem"
+        minW="100%"
+        direction={{ base: 'column-reverse', md: 'row' }}
+      >
         <Menu onOpen={onOpen} />
-        <Flex flexDirection="column" gap="2rem" w="60rem">
+        <Flex
+          flexDirection="column"
+          gap="2rem"
+          w={['100%', '100%', '50%']}
+          mb="2rem"
+        >
           <ProfileCard onOpenProfile={onOpenProfile} />
           {userPost?.length > 0 ? (
             userPost.map((post) => {
-              return <PostCard key={post._id} post={post} onOpen={onOpen} />
+              return (
+                <PostCard
+                  key={post._id}
+                  post={post}
+                  onOpen={onOpen}
+                  setUserEditPost={setUserEditPost}
+                />
+              )
             })
           ) : (
             <Heading color="gray.600">No post yet</Heading>

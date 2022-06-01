@@ -26,9 +26,9 @@ export const posts = [
     comments: [
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
+        firstName: 'Guest',
+        lastName: 'User',
+        username: 'guestuser',
         createdAt: 2010,
         updatedAt: formatDate(),
         profile:
@@ -63,13 +63,13 @@ export const posts = [
         updatedAt: formatDate(),
         profile:
           'https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg',
-        commentData: 'If life were predictable it would cease to be life.',
+        commentData: 'our darkest moments.',
       },
     ],
   },
   {
     _id: uuid(),
-    content: "Life is what happens when you're busy making other plans.",
+    content: "Keep your face always toward the sunshine, and shadows will fall behind you.",
     likes: {
       likeCount: 6,
       likedBy: [],
@@ -96,48 +96,49 @@ export const posts = [
       },
       {
         _id: uuid(),
-        firstName: 'Adarsh',
-        lastName: 'Balika',
-        username: 'adarshbalika',
+        firstName: 'Guest',
+        lastName: 'User',
+        username: 'guestuser',
         createdAt: 2021,
         updatedAt: formatDate(),
         profile:
           'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
-        commentData: 'If life were predictable it would cease to be life.',
+        commentData: ' I am prepared enough to do this.',
       },
     ],
   },
   {
     _id: uuid(),
-    content: "Life is what happens when you're busy making other plans.",
+    content: "Be courageous. Challenge orthodoxy. Stand up for what you believe in. When you are in your rocking chair talking to your grandchildren many years from now, be sure you have a good story to tell.",
     likes: {
       likeCount: 7,
       likedBy: [],
       dislikedBy: [],
     },
-    firstName: 'Adarsh',
-    lastName: 'Balika',
-    username: 'adarshbalika',
+    firstName: 'Guest',
+    lastName: 'User',
+    username: 'guestuser',
     createdAt: 2016,
     updatedAt: formatDate(),
     profile:
       'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+    comments:[]
   },
   {
     _id: uuid(),
-    content: "Life is what happens when you're busy making other plans.",
+    content: "You make a choice: continue living your life feeling muddled in this abyss of self-misunderstanding, or you find your identity independent of it. You draw your own box.",
     likes: {
       likeCount: 12,
       likedBy: [],
       dislikedBy: [],
     },
-    firstName: 'Damaris',
-    lastName: 'Buck',
-    username: 'damarisbuck',
+    firstName: 'Namrata',
+    lastName: 'Raikwar',
+    username: 'namrataraikwar',
     createdAt: 2018,
     updatedAt: formatDate(),
     profile:
-      'https://cdn3.vectorstock.com/i/thumb-large/66/77/avatar-young-bearded-guy-brow-haired-man-vector-32416677.jpg',
+    'https://thumbs.dreamstime.com/b/software-language-programmer-avatar-software-language-programmer-avatar-vector-illustration-design-110589729.jpg',
     comments: [
       {
         _id: uuid(),
@@ -148,42 +149,42 @@ export const posts = [
         updatedAt: formatDate(),
         profile:
           'https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg',
-        commentData: 'If life were predictable it would cease to be life.',
+        commentData: 'Am I OK with how I’m living today.',
       },
     ],
   },
   {
     _id: uuid(),
-    content: "Life is what happens when you're busy making other plans.",
+    content: "At the end of the day, whether or not those people are comfortable with how you’re living your life doesn’t matter. What matters is whether you’re comfortable with it.",
     likes: {
       likeCount: 2,
       likedBy: [],
       dislikedBy: [],
     },
-    firstName: 'Damaris',
-    lastName: 'Buck',
-    username: 'damarisbuck',
+    firstName: 'Savanah',
+    lastName: 'solis',
+    username: 'savanahsolis',
     createdAt: 2020,
     updatedAt: formatDate(),
     profile:
-      'https://cdn3.vectorstock.com/i/thumb-large/66/77/avatar-young-bearded-guy-brow-haired-man-vector-32416677.jpg',
+    'https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg',
     comments: [
       {
         _id: uuid(),
-        firstName: 'Savanah',
-        lastName: 'solis',
-        username: 'savanahsolis',
+        firstName: 'Namrata',
+        lastName: 'Raikwar',
+        username: 'namrataraikwar',
         createdAt: 2019,
         updatedAt: formatDate(),
         profile:
-          'https://image.shutterstock.com/image-vector/man-character-face-avatar-glasses-260nw-562077406.jpg',
+        'https://thumbs.dreamstime.com/b/software-language-programmer-avatar-software-language-programmer-avatar-vector-illustration-design-110589729.jpg',
         commentData: 'If life were predictable it would cease to be life.',
       },
     ],
   },
   {
     _id: uuid(),
-    content: "Life is what happens when you're busy making other plans.",
+    content: "Do not allow people to dim your shine because they are blinded. Tell them to put some sunglasses on.",
     likes: {
       likeCount: 3,
       likedBy: [],
@@ -206,7 +207,7 @@ export const posts = [
         updatedAt: formatDate(),
         profile:
           'https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425__340.png',
-        commentData: 'If life were predictable it would cease to be life.',
+        commentData: 'life.',
       },
     ],
   },

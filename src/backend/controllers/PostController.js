@@ -86,7 +86,7 @@ export const createPostHandler = function (schema, request) {
         likedBy: [],
         dislikedBy: [],
       },
-
+      comments:[],
       firstName: user.firstName,
       lastName: user.lastName,
       username: user.username,
@@ -219,7 +219,7 @@ export const dislikePostHandler = function (schema, request) {
     }
     const postId = request.params.postId
     let post = schema.posts.findBy({ _id: postId }).attrs
-    if (post.likes.likeCount === 0) {
+    if (post.likes.likeCount === 0) { 
       return new Response(
         400,
         {},
@@ -237,7 +237,7 @@ export const dislikePostHandler = function (schema, request) {
     const updatedLikedBy = post.likes.likedBy.filter(
       (currUser) => currUser._id !== user._id,
     )
-    post.likes.dislikedBy.push(user)
+    post.likes.dislikedBy.push(JSON.parse(JSON.stringify(user)))
     post = { ...post, likes: { ...post.likes, likedBy: updatedLikedBy } }
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() })
     return new Response(201, {}, { posts: this.db.posts })

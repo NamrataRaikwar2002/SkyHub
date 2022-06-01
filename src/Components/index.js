@@ -5,3 +5,4 @@ export { UserCard } from './UserCard'
 export { ProfileCard } from './ProfileCard'
 export { ProfileModal } from './ProfileModal'
 export {Suggestion} from './Suggestion'
+export {Landing} from './Landing';
