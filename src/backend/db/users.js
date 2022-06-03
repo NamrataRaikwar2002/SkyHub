@@ -11,7 +11,7 @@ export const users = [
     lastName: 'User',
     username: 'guestuser',
     password: 'guestuser123',
-    bio: 'I am web develo.',
+    bio: 'I am a web developer.',
     link: 'https://hashnode.com/@NamrataRaikwar',
     profile:
       'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
@@ -66,7 +66,7 @@ export const users = [
     firstName: 'Damaris',
     lastName: 'Buck',
     username: 'damarisbuck',
-    password: 'damarisBuck123',
+    password: 'damarisBuck123'z,
     bio: 'I am web developer.',
     link: 'https://adarshbalika.netlify.app/',
     profile:
