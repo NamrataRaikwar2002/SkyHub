@@ -1,4 +1,5 @@
 import { Flex, Avatar, Heading, Text, Button, Box } from '@chakra-ui/react'
+import { useEffect } from 'react'
 import { BiPlus } from 'react-icons/bi'
 import { useDispatch, useSelector } from 'react-redux'
 import { followUser, unfollowUser } from '../redux/thunk'

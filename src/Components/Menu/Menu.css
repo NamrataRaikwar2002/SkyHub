@@ -26,7 +26,7 @@
 
 .active {
     background-color: var(--menu-selected);
-    border-radius: var(--border-radius);
+    border-radius: 4px;
     color: var(--primary-color);
 }
 
@@ -48,8 +48,7 @@
 @media screen and (max-width:760px) {
 
     .appName,
-    .sideBarName,
-    .newPostBtn {
+    .sideBarName {
         display: none;
     }
 
@@ -70,6 +69,5 @@
         right: 0;
         left: 0;
         top: unset;
-        background-color: red;
     }
 }

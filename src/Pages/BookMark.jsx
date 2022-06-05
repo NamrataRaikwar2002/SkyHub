@@ -20,7 +20,12 @@ const BookMark = () => {
 
   return (
     <>
-      <Post isOpen={isOpen} onClose={onClose} />
+      <Post
+        isOpen={isOpen}
+        onClose={onClose}
+        userEditPost={userEditPost}
+        setUserEditPost={setUserEditPost}
+      />
       <Flex
         justifyContent="center"
         gap="1rem"
@@ -48,7 +53,9 @@ const BookMark = () => {
               )
             })
           ) : (
-            <Heading color="gray.600">Nothing in bookmark</Heading>
+            <Heading color="gray.600" position="absolute" top="40%" left="40%">
+              Nothing in bookmark
+            </Heading>
           )}
         </Flex>
         <Suggestion />

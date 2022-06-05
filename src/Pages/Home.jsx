@@ -11,6 +11,8 @@ const Home = () => {
   const dispatch = useDispatch()
   const { posts, status } = useSelector((state) => state.post)
   const { user } = useSelector((state) => state.auth)
+  const { users } = useSelector((state) => state.user)
+
   const [userEditPost, setUserEditPost] = useState(null)
 
   useEffect(() => {
@@ -19,6 +21,19 @@ const Home = () => {
       dispatch(getAllUser())
     }
   }, [status, posts])
+
+  const followedUsersPost = users.filter((followedUser) =>
+    followedUser.followers.some(
+      (followingUser) => followingUser.username === user.username,
+    ),
+  )
+  const userPost = posts.filter(
+    (post) =>
+      user.username === post.username ||
+      followedUsersPost.some(
+        (followingUser) => followingUser.username === post.username,
+      ),
+  )
 
   return (
     <>
@@ -71,18 +86,30 @@ const Home = () => {
               <Text color="gray.400">Write something interesting...</Text>
             </Flex>
           </Box>
-          {posts?.length > 0 ? (
-            posts.slice(0).reverse().map((post) => {
-              return (
-                <PostCard
-                  key={post._id}
-                  post={post}
-                  onOpen={onOpen}
-                  setUserEditPost={setUserEditPost}
-                />
-              )
-            })
-          ) : <Spinner color='blue.400' size='xl' textAlign='center' position='absolute' left='50%' top='50%'/> }
+          {userPost?.length > 0 ? (
+            userPost
+              .slice(0)
+              .reverse()
+              .map((post) => {
+                return (
+                  <PostCard
+                    key={post._id}
+                    post={post}
+                    onOpen={onOpen}
+                    setUserEditPost={setUserEditPost}
+                  />
+                )
+              })
+          ) : (
+            <Spinner
+              color="blue.400"
+              size="xl"
+              textAlign="center"
+              position="absolute"
+              left="50%"
+              top="50%"
+            />
+          )}
         </Flex>
         <Suggestion />
       </Flex>

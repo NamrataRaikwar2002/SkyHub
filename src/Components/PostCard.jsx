@@ -15,6 +15,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Image
 } from '@chakra-ui/react'
 import { BsThreeDotsVertical, BsBookmark, BsBookmarkFill } from 'react-icons/bs'
 import { FaEdit, FaTrash, FaHeart } from 'react-icons/fa'
@@ -42,6 +43,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
     likes,
     content,
     createdAt,
+    imgContent
   } = post
   const { token, bookmarks, user } = useSelector((state) => state.auth)
   const dispatch = useDispatch()
@@ -157,8 +159,9 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
             </Popover>
           ) : null}
         </Flex>
-        <Box gap="2rem">
-          <Text>{content}</Text>
+        <Box>
+          <Text pb='5px'>{content}</Text>
+          {imgContent ? <Image src={imgContent} alt='image' pb='10px'/> : null}
           <Flex gap="3rem">
             <Flex>
               <IconButton
@@ -169,7 +172,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                     <FaHeart color="#E53E3E" onClick={dislikePostHandler} />
                   )
                 }
-                fontSize="1.8rem"
+                fontSize="1.9rem"
                 bg="transparent"
                 borderRadius="50%"
                 _hover={{
@@ -200,7 +203,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
         {/* comment input */}
 
         <Flex gap="1rem">
-          <Avatar name="avatar" size="md" src={!user.profile ? "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg" : user.profile} />
+          <Avatar name="avatar" size="md" src={user.profile} />
           <InputGroup>
             <Input
               borderColor="gray.400"
@@ -225,6 +228,7 @@ const PostCard = ({ post, onOpen, setUserEditPost }) => {
                   bgColor: 'transparent',
                 }}
                 onClick={commentPostHandler}
+                disabled={commentData===' '}
               >
                 Post
               </Button>

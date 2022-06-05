@@ -37,6 +37,7 @@ export const signupHandler = function (schema, request) {
       username,
       password,
       ...rest,
+      profile:"https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg",
       followers: [],
       following: [],
       bookmarks: [],

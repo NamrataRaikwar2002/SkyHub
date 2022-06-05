@@ -66,7 +66,7 @@ export const users = [
     firstName: 'Damaris',
     lastName: 'Buck',
     username: 'damarisbuck',
-    password: 'damarisBuck123'z,
+    password: 'damarisBuck123',
     bio: 'I am web developer.',
     link: 'https://adarshbalika.netlify.app/',
     profile:

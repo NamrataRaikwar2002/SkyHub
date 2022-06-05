@@ -57,7 +57,15 @@ const ProfileCard = ({ onOpenProfile }) => {
             />
           </Tooltip>
         </Flex>
-        <Avatar name="avatar" boxSize="15rem" src={!profile ? "https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg" : profile}></Avatar>
+        <Avatar
+          name="avatar"
+          boxSize="15rem"
+          src={
+            !profile
+              ? 'https://icon-library.com/images/unknown-person-icon/unknown-person-icon-4.jpg'
+              : profile
+          }
+        ></Avatar>
         <Flex flexDirection="column" alignItems="center" gap="0.2rem">
           <Heading>{token ? `${firstName} ${lastName}` : null}</Heading>
           <Text fontSize="xl" color="gray.500" fontWeight="bold">

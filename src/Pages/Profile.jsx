@@ -72,7 +72,14 @@ const Profile = () => {
               )
             })
           ) : (
-            <Heading color="gray.600">No post yet</Heading>
+            <Heading
+              color="gray.600"
+              position="absolute"
+              bottom="20%"
+              left="45%"
+            >
+              No post yet
+            </Heading>
           )}
         </Flex>
         <Suggestion />

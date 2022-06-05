@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
-const Post = ({ isOpen, onClose, userEditPost }) => {
+const Post = ({ isOpen, onClose, userEditPost, setUserEditPost }) => {
   const dispatch = useDispatch()
   const [postData, setPostData] = useState('')
   const { token } = useSelector((state) => state.auth)
@@ -29,6 +29,7 @@ const Post = ({ isOpen, onClose, userEditPost }) => {
         _id: userEditPost._id,
       }
       dispatch(editPost({ postDetail, postData, token }))
+      setUserEditPost(null)
       setPostData('')
       onClose()
       toast.success('Post edited!')
@@ -68,6 +69,7 @@ const Post = ({ isOpen, onClose, userEditPost }) => {
             size="lg"
             fontSize="1.5rem"
             onClick={postHandler}
+            disabled={postData===' '}
           >
             Post
           </Button>

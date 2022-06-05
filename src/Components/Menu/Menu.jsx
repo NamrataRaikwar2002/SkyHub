@@ -1,7 +1,9 @@
 import './Menu.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
+import {Button} from '@chakra-ui/react';
 
 const Menu = ({ onOpen }) => {
+  const location = useLocation();
   return (
     <div className="menu">
       <h1 className="primaryColorText centerText appName cursiveFont">SkyHub</h1>
@@ -50,9 +52,25 @@ const Menu = ({ onOpen }) => {
             <p className="sideBarName">Profile</p>
           </li>
         </NavLink>
-        <button className="primary_btn btn newPostBtn" onClick={onOpen}>
-          New Post
-        </button>
+        <Button
+              fontSize="2xl"
+              bgColor="blue.500"
+              color="white"
+              size="lg"
+              _hover={{
+                bgColor: 'blue.400',
+              }}
+              _focus={{ bgColor: 'none' }}
+              _active={{
+                bgColor: 'blue.600',
+              }}
+              disabled={location.pathname==='/bookmark-page'}
+              onClick={onOpen}
+              display={{base:'none',md:'block'}}
+              h='4rem'
+            >
+            New Post
+            </Button>
       </ul>
     </div>
   )
