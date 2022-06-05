@@ -52,7 +52,7 @@ export const Signup = () => {
             JSON.stringify(response.payload.data.createdUser),
           )
           localStorage.setItem('token', response.payload.data.encodedToken)
-          navigate(location?.state?.from?.pathname || '/home-page', {
+          navigate(location?.state?.from?.pathname || '/explore-page', {
             replace: true,
           })
           toast.success(
