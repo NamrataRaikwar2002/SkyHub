@@ -18,7 +18,7 @@ export const posts = [
     },
     firstName: 'John',
     lastName: 'Kidd',
-    username: 'jhonkidd',
+    username: 'johnkidd',
     createdAt: 2021,
     updatedAt: formatDate(),
     profile:
@@ -115,6 +115,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    imgContent:'https://perfecto-web.com/uploads/blog/2017/becomedev-motivation-en.jpg',
     firstName: 'Guest',
     lastName: 'User',
     username: 'guestuser',
@@ -132,6 +133,7 @@ export const posts = [
       likedBy: [],
       dislikedBy: [],
     },
+    imgContent:"https://i.pinimg.com/736x/27/8d/b4/278db4bb38d9345c97918d53448f7ef9.jpg",
     firstName: 'Namrata',
     lastName: 'Raikwar',
     username: 'namrataraikwar',
@@ -184,12 +186,41 @@ export const posts = [
   },
   {
     _id: uuid(),
+    content: "You are the programmer write the code run the code.",
+    likes: {
+      likeCount: 9,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    imgContent:"https://c4.wallpaperflare.com/wallpaper/350/659/616/programmer-code-notebooks-motivational-macbook-headphones-coffee-wallpaper-preview.jpg",
+    firstName: 'Guest',
+    lastName: 'User',
+    username: 'guestuser',
+    createdAt: 2016,
+    updatedAt: formatDate(),
+    profile:
+      'https://c8.alamy.com/zooms/9/c6f3f3c389b1482b8da4487bd00ad018/kfeagb.jpg',
+    comments:[{
+    _id: uuid(),
+      firstName: 'Damaris',
+    lastName: 'Buck',
+    username: 'damarisbuck',
+    createdAt: 2021,
+    updatedAt: formatDate(),
+    profile:
+      'https://cdn3.vectorstock.com/i/thumb-large/66/77/avatar-young-bearded-guy-brow-haired-man-vector-32416677.jpg',
+      commentData: 'yeah!',
+    }]
+  },
+  {
+    _id: uuid(),
     content: "Do not allow people to dim your shine because they are blinded. Tell them to put some sunglasses on.",
     likes: {
       likeCount: 3,
       likedBy: [],
       dislikedBy: [],
     },
+    imgContent:"https://media.istockphoto.com/photos/these-night-owls-always-work-with-dedication-picture-id1080277602?k=20&m=1080277602&s=612x612&w=0&h=q_dS31qsno3tzPKGsR2vdbOcqIiDexN6k4nO4w5ARXw=",
     firstName: 'Damaris',
     lastName: 'Buck',
     username: 'damarisbuck',
@@ -202,7 +233,7 @@ export const posts = [
         _id: uuid(),
         firstName: 'John',
         lastName: 'Kidd',
-        username: 'jhonkidd',
+        username: 'johnkidd',
         createdAt: 2020,
         updatedAt: formatDate(),
         profile:
