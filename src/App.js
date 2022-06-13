@@ -4,7 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 import { RequireAuth } from './RequireAuth'
-import { Heading } from '@chakra-ui/react'
+import { Heading, Link } from '@chakra-ui/react'
 
 function App() {
   const location = useLocation()
@@ -23,7 +23,7 @@ function App() {
         pauseOnHover
       />
       {location?.pathname !== '/' && location?.pathname !== '/signup-page' ? (
-        <Heading
+        <Link href='/home-page' _hover={{textDecoration:'none'}} ><Heading
           as="h1"
           fontSize="4rem"
           className="primaryColorText centerText appName"
@@ -40,6 +40,7 @@ function App() {
         >
           SkyHub
         </Heading>
+        </Link>
       ) : null}
       <Routes>
         <Route path="/" element={<Login />} />

@@ -1,12 +1,12 @@
 import './Menu.css'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, Link } from 'react-router-dom'
 import {Button} from '@chakra-ui/react';
 
 const Menu = ({ onOpen }) => {
   const location = useLocation();
   return (
     <div className="menu">
-      <h1 className="primaryColorText centerText appName cursiveFont">SkyHub</h1>
+      <Link to='/home-page'><h1 className="primaryColorText centerText appName cursiveFont">SkyHub</h1></Link>
       <ul className="allList">
         <NavLink
           to="/home-page"
