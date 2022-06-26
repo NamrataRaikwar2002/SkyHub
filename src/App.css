@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+
 :root {
   --primary-color: #0284c7;
   --secondary-color: #718096;
@@ -86,9 +88,14 @@ a {
   text-decoration: none;
 }
 
+.cursiveFont{
+  font-family:'Dancing Script', cursive;
+}
+
 @media screen and (max-width: 1000px) {
   html {
     font-size: 55%;
+
   }
 }
 

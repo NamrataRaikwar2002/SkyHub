@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { login } from '../../redux/thunk'
 import { useLocation } from 'react-router'
+import { Landing } from '../../Components'
+import { Heading } from '@chakra-ui/react'
 
 export const Login = () => {
   const [inputType, setinputType] = useState('password')
@@ -19,8 +21,8 @@ export const Login = () => {
     e.preventDefault()
     setLoginUser((user) => ({
       ...user,
-      username: 'adarshbalika',
-      password: 'adarshBalika123',
+      username: 'guestuser',
+      password: 'guestuser123',
     }))
   }
 
@@ -47,11 +49,13 @@ export const Login = () => {
   }
 
   return (
-    <main className="login_page">
-      <section className="login_box content">
+    <main className="login_page ">
+      <Landing />
+      <section className="login_box content loginpage_box">
+        <h1 className="createAccount landingHeading cursiveFont">Let's Connect 🤝</h1>
         <form>
           <div className="login_div">
-            <h1 className="createAccount loginPageHeading primaryColorText">
+            <h1 className="createAccount loginPageHeading primaryColorText cursiveFont">
               Welcome to SkyHub
             </h1>
             <h2 className="createAccount">Login</h2>
@@ -109,7 +113,7 @@ export const Login = () => {
               className="primary_btn btn"
               onClick={guestUserHandler}
             >
-              Guest Login
+              Add Guest Credentials
             </button>
             <button
               type="submit"

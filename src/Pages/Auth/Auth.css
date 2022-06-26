@@ -1,16 +1,15 @@
 .login_box {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .login_div {
     display: flex;
     flex-direction: column;
-    padding: 4rem;
-    gap: 2rem;
-    box-shadow: var(--box-shadow);
-    width: 40rem;
-    margin-top: 5rem;
+    padding: 2.5rem;
+    gap: 1rem;
+    width: 55rem;
+    justify-content: center;
     border-radius: var(--border-radius);
 }
 
@@ -74,4 +73,39 @@
 .firstLastNameDiv {
     display: flex;
     gap: 2rem;
+}
+
+.login_page {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginpage_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landingHeading{
+    font-size: 7rem;
+}
+.landingHeading::first-letter{
+    color: red;
+}
+
+@media screen and (max-width:450px) {
+    .login_box{
+        display: flex;
+        flex-direction: column;
+    }
+    .login_div{
+        box-shadow: var(--box-shadow);
+        width: 60rem;
+    }
+}
+
+@media screen and (min-width:450px) {
+    .landingHeading{
+        display: none;
+    }
 }

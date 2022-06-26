@@ -4,6 +4,7 @@ import { signup } from '../../redux/thunk'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { Landing } from '../../Components'
 
 export const Signup = () => {
   const [inputType, setinputType] = useState({
@@ -51,7 +52,7 @@ export const Signup = () => {
             JSON.stringify(response.payload.data.createdUser),
           )
           localStorage.setItem('token', response.payload.data.encodedToken)
-          navigate(location?.state?.from?.pathname || '/home-page', {
+          navigate(location?.state?.from?.pathname || '/explore-page', {
             replace: true,
           })
           toast.success(
@@ -69,10 +70,12 @@ export const Signup = () => {
   }
   return (
     <main className="login_page">
+      <Landing />
       <section className="login_box content">
+        <h1 className="createAccount landingHeading cursiveFont">Let's Connect 🤝</h1>
         <form>
           <div className="login_div">
-            <h1 className="createAccount loginPageHeading primaryColorText">
+            <h1 className="createAccount loginPageHeading primaryColorText cursiveFont">
               Welcome to SkyHub
             </h1>
             <h2 className="createAccount">Signup</h2>
